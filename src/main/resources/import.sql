@@ -1,0 +1,31 @@
+insert into tb_categorias(nome) values ('Informática');
+insert into tb_categorias(nome) values ('Escritório');
+insert into tb_categorias(nome) values ('Cama, mesa e banho');
+insert into tb_categorias(nome) values ('Eletrônicos');
+insert into tb_categorias(nome) values ('Jardinagem');
+insert into tb_categorias(nome) values ('Perfumaria');
+
+insert into tb_produtos(nome, preco) values ('Computador', 2000);
+insert into tb_produtos(nome, preco) values ('Impressora', 800);
+insert into tb_produtos(nome, preco) values ('Mouse', 80);
+insert into tb_produtos(nome, preco) values ('Mesa de escritório', 300);
+insert into tb_produtos(nome, preco) values ('Toalha', 50);
+insert into tb_produtos(nome, preco) values ('Colcha', 200);
+insert into tb_produtos(nome, preco) values ('TV True Color', 1200);
+insert into tb_produtos(nome, preco) values ('Roçadeira', 80);
+insert into tb_produtos(nome, preco) values ('Abajour', 100);
+insert into tb_produtos(nome, preco) values ('Shampoo', 90);
+
+insert into tb_categorias_produtos(categoria_id, produto_id) values (1, 1);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (1, 2);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (2, 2);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (1, 3);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (2, 3);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (2, 4);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (3, 5);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (3, 6);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (4, 7);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (5, 8);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (4, 9);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (2, 9);
+insert into tb_categorias_produtos(categoria_id, produto_id) values (6, 10);
