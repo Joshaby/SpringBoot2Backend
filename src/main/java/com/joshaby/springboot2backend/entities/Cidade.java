@@ -7,16 +7,14 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_categorias")
-public class Categoria implements Serializable {
+@Table(name = "tb_cidades")
+public class Cidade implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +22,7 @@ public class Categoria implements Serializable {
 
     private String nome;
 
-    @ManyToMany
-    @JoinTable(
-            name = "tb_categorias_produtos",
-            joinColumns = @JoinColumn(name = "categoria_id"),
-            inverseJoinColumns = @JoinColumn(name = "produto_id")
-    )
-    private Set<Produto> produtos = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "estado_id")
+    private Estado estado;
 }

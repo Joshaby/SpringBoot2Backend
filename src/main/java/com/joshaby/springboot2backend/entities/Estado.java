@@ -15,8 +15,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "tb_categorias")
-public class Categoria implements Serializable {
+@Table(name = "tb_estados")
+public class Estado implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +24,6 @@ public class Categoria implements Serializable {
 
     private String nome;
 
-    @ManyToMany
-    @JoinTable(
-            name = "tb_categorias_produtos",
-            joinColumns = @JoinColumn(name = "categoria_id"),
-            inverseJoinColumns = @JoinColumn(name = "produto_id")
-    )
-    private Set<Produto> produtos = new HashSet<>();
+    @OneToMany(mappedBy = "estado")
+    private Set<Cidade> cidades = new HashSet<>();
 }

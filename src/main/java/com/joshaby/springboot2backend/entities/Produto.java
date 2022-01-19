@@ -1,9 +1,6 @@
 package com.joshaby.springboot2backend.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,7 +11,6 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(name = "tb_produtos")
 public class Produto implements Serializable {
@@ -29,4 +25,7 @@ public class Produto implements Serializable {
 
     @ManyToMany(mappedBy = "produtos")
     private Set<Categoria> categorias = new HashSet<>();
+
+    @OneToMany(mappedBy = "id.pedido")
+    private Set<ItemPedido> itemPedidos = new HashSet<>();
 }
