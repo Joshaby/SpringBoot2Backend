@@ -14,7 +14,6 @@ import java.util.Set;
 
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_pedidos")
@@ -34,6 +33,17 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
+
     @OneToMany(mappedBy = "id.pedido")
     private Set<ItemPedido> itemPedidos = new HashSet<>();
+
+    public Pedido(Integer id, Date instante, Cliente cliente, Endereco endereco) {
+        this.id = id;
+        this.instante = instante;
+        this.cliente = cliente;
+        this.endereco = endereco;
+    }
 }

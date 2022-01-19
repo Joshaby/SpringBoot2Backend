@@ -1,31 +1,68 @@
-insert into tb_categorias(nome) values ('Informática');
-insert into tb_categorias(nome) values ('Escritório');
-insert into tb_categorias(nome) values ('Cama, mesa e banho');
-insert into tb_categorias(nome) values ('Eletrônicos');
-insert into tb_categorias(nome) values ('Jardinagem');
-insert into tb_categorias(nome) values ('Perfumaria');
-
-insert into tb_produtos(nome, preco) values ('Computador', 2000);
-insert into tb_produtos(nome, preco) values ('Impressora', 800);
-insert into tb_produtos(nome, preco) values ('Mouse', 80);
-insert into tb_produtos(nome, preco) values ('Mesa de escritório', 300);
-insert into tb_produtos(nome, preco) values ('Toalha', 50);
-insert into tb_produtos(nome, preco) values ('Colcha', 200);
-insert into tb_produtos(nome, preco) values ('TV True Color', 1200);
-insert into tb_produtos(nome, preco) values ('Roçadeira', 80);
-insert into tb_produtos(nome, preco) values ('Abajour', 100);
-insert into tb_produtos(nome, preco) values ('Shampoo', 90);
-
-insert into tb_categorias_produtos(categoria_id, produto_id) values (1, 1);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (1, 2);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (2, 2);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (1, 3);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (2, 3);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (2, 4);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (3, 5);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (3, 6);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (4, 7);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (5, 8);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (4, 9);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (2, 9);
-insert into tb_categorias_produtos(categoria_id, produto_id) values (6, 10);
+-- INSERT INTO tb_categorias VALUES (1,'Informática');
+-- INSERT INTO tb_categorias VALUES (2,'Escritório');
+-- INSERT INTO tb_categorias VALUES (3,'Cama, mesa e banho');
+-- INSERT INTO tb_categorias VALUES (4,'Eletrônicos');
+-- INSERT INTO tb_categorias VALUES (5,'Jardinagem');
+-- INSERT INTO tb_categorias VALUES (6,'Decoração');
+-- INSERT INTO tb_categorias VALUES (7,'Perfumaria');
+--
+-- INSERT INTO tb_produtos VALUES (1,'Computador',2000);
+-- INSERT INTO tb_produtos VALUES (2,'Impressora',800);
+-- INSERT INTO tb_produtos VALUES (3,'Mouse',80);
+-- INSERT INTO tb_produtos VALUES (4,'Mesa de escritório',300);
+-- INSERT INTO tb_produtos VALUES (5,'Toalha',50);
+-- INSERT INTO tb_produtos VALUES (6,'Colcha',200);
+-- INSERT INTO tb_produtos VALUES (7,'TV True Color',1200);
+-- INSERT INTO tb_produtos VALUES (8,'Roçadeira',80);
+-- INSERT INTO tb_produtos VALUES (9,'Abajour',100);
+-- INSERT INTO tb_produtos VALUES (10,'Pendente',180);
+-- INSERT INTO tb_produtos VALUES (11,'Shampoo',90);
+--
+-- INSERT INTO tb_categorias_produtos VALUES (1,1);
+-- INSERT INTO tb_categorias_produtos VALUES (1,2);
+-- INSERT INTO tb_categorias_produtos VALUES (1,3);
+-- INSERT INTO tb_categorias_produtos VALUES (2,2);
+-- INSERT INTO tb_categorias_produtos VALUES (2,4);
+-- INSERT INTO tb_categorias_produtos VALUES (3,5);
+-- INSERT INTO tb_categorias_produtos VALUES (3,6);
+-- INSERT INTO tb_categorias_produtos VALUES (4,1);
+-- INSERT INTO tb_categorias_produtos VALUES (4,2);
+-- INSERT INTO tb_categorias_produtos VALUES (4,3);
+-- INSERT INTO tb_categorias_produtos VALUES (4,7);
+-- INSERT INTO tb_categorias_produtos VALUES (5,8);
+-- INSERT INTO tb_categorias_produtos VALUES (6,9);
+-- INSERT INTO tb_categorias_produtos VALUES (6,10);
+-- INSERT INTO tb_categorias_produtos VALUES (7,11);
+--
+-- INSERT INTO tb_estados VALUES (1,'Minas Gerais');
+-- INSERT INTO tb_estados VALUES (2,'São Paulo');
+--
+-- INSERT INTO tb_cidades VALUES (1,'Uberlândia',1);
+-- INSERT INTO tb_cidades VALUES (2,'São Paulo',2);
+-- INSERT INTO tb_cidades VALUES (3,'Campinas',2);
+--
+-- INSERT INTO tb_clientes VALUES (1,'36378912377','josehenriquebrito55@gmail.com','Maria Silva','12345',1);
+-- INSERT INTO tb_clientes VALUES (2,'51903479070','josehenriquebrito56@gmail.com','Ana Silva','12345',1);
+--
+-- INSERT INTO tb_enderecos VALUES (1,'Jardim','38220834','Apto 203','Rua Flores','300',1,1);
+-- INSERT INTO tb_enderecos VALUES (2,'Centro','38777012','Sala 800','Avenidas Matos','105',2,1);
+-- INSERT INTO tb_enderecos VALUES (3,'Centro','34357012','Sala 801','Avenidas Silva','125',2,2);
+--
+-- INSERT INTO tb_pedidos VALUES (1,'2017-09-30 10:32:00',1,1);
+-- INSERT INTO tb_pedidos VALUES (2,'2017-10-10 19:35:00',1,2);
+--
+-- INSERT INTO tb_pagamentos VALUES (1,3);
+-- INSERT INTO tb_pagamentos VALUES (2,1);
+--
+-- INSERT INTO tb_item_pedido VALUES (0,2000,1,1,1),
+-- INSERT INTO tb_item_pedido VALUES (0,80,2,3,1);
+-- INSERT INTO tb_item_pedido VALUES (100,800,1,2,2);
+--
+-- INSERT INTO tb_pagamentos_cartao VALUES (6,1);
+--
+-- INSERT INTO tb_pagamentos_com_boleto VALUES ('2017-10-20 00:00:00',NULL,2);
+--
+-- INSERT INTO tb_telefones VALUES (1,'27363323');
+-- INSERT INTO tb_telefones VALUES (1,'93838393');
+-- INSERT INTO tb_telefones VALUES (2,'27389323');
+-- INSERT INTO tb_telefones VALUES (2,'936473393');

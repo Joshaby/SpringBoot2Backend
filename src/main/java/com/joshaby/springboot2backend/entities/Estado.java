@@ -12,7 +12,6 @@ import java.util.Set;
 
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_estados")
@@ -26,4 +25,9 @@ public class Estado implements Serializable {
 
     @OneToMany(mappedBy = "estado")
     private Set<Cidade> cidades = new HashSet<>();
+
+    public Estado(Integer id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 }

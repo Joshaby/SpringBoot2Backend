@@ -9,7 +9,6 @@ import java.util.Set;
 
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_produtos")
@@ -28,4 +27,10 @@ public class Produto implements Serializable {
 
     @OneToMany(mappedBy = "id.pedido")
     private Set<ItemPedido> itemPedidos = new HashSet<>();
+
+    public Produto(Integer id, String nome, Double preco) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+    }
 }

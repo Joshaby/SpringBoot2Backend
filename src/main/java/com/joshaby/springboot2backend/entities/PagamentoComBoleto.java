@@ -2,7 +2,7 @@ package com.joshaby.springboot2backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import lombok.AllArgsConstructor;
+import com.joshaby.springboot2backend.entities.enums.EstadoPagamentoEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +13,6 @@ import java.util.Date;
 
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_pagamentos_com_boleto")
@@ -25,4 +24,12 @@ public class PagamentoComBoleto extends Pagamento {
 
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private Date dataVencimento;
+
+    public PagamentoComBoleto(
+            Integer id, EstadoPagamentoEnum estadoPagamento, Pedido pedido, Date dataPagamento, Date dataVencimento) {
+
+        super(id, estadoPagamento, pedido);
+        this.dataPagamento = dataPagamento;
+        this.dataVencimento = dataVencimento;
+    }
 }

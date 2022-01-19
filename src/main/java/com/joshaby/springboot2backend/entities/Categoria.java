@@ -12,7 +12,6 @@ import java.util.Set;
 
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_categorias")
@@ -31,4 +30,9 @@ public class Categoria implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "produto_id")
     )
     private Set<Produto> produtos = new HashSet<>();
+
+    public Categoria(Integer id, String nome) {
+        this.id = id;
+        this.nome = nome;
+    }
 }
