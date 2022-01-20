@@ -1,5 +1,6 @@
 package com.joshaby.springboot2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.joshaby.springboot2backend.entities.enums.TipoClienteEnum;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,7 @@ public class Cliente {
 
     private Integer tipoCliente;
 
+    @Getter(onMethod = @__(@JsonIgnore))
     private String senha;
 
     @OneToMany(mappedBy = "cliente")
@@ -39,6 +41,7 @@ public class Cliente {
     private Set<String> telefones = new HashSet<>();
 
     @OneToMany(mappedBy = "cliente")
+    @Getter(onMethod = @__(@JsonIgnore))
     private Set<Pedido> pedidos = new HashSet<>();
 
     public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoClienteEnum tipoCliente, String senha) {

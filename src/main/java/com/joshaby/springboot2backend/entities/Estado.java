@@ -1,6 +1,6 @@
 package com.joshaby.springboot2backend.entities;
 
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +24,7 @@ public class Estado implements Serializable {
     private String nome;
 
     @OneToMany(mappedBy = "estado")
+    @Getter(onMethod = @__(@JsonIgnore))
     private Set<Cidade> cidades = new HashSet<>();
 
     public Estado(Integer id, String nome) {

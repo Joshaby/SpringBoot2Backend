@@ -1,5 +1,6 @@
 package com.joshaby.springboot2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class ItemPedidoPK implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "pedido_id")
+    @Getter(onMethod = @__(@JsonIgnore))
     private Pedido pedido;
 
     @ManyToOne

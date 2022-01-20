@@ -1,5 +1,6 @@
 package com.joshaby.springboot2backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class Endereco implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
+    @Getter(onMethod = @__(@JsonIgnore))
     private Cliente cliente;
 
     @ManyToOne

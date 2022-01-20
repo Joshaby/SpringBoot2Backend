@@ -1,6 +1,6 @@
 package com.joshaby.springboot2backend.entities;
 
-import lombok.AllArgsConstructor;
+import com.joshaby.springboot2backend.dto.CategoriaDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +16,7 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_categorias")
 public class Categoria implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +24,7 @@ public class Categoria implements Serializable {
 
     private String nome;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "tb_categorias_produtos",
             joinColumns = @JoinColumn(name = "categoria_id"),
@@ -34,5 +35,10 @@ public class Categoria implements Serializable {
     public Categoria(Integer id, String nome) {
         this.id = id;
         this.nome = nome;
+    }
+
+    public Categoria(CategoriaDTO dto) {
+        this.id = dto.getId();
+        this.nome = dto.getNome();
     }
 }
