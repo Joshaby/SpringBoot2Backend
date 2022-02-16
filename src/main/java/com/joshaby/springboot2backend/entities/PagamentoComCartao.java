@@ -1,7 +1,7 @@
 package com.joshaby.springboot2backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.joshaby.springboot2backend.entities.enums.EstadoPagamentoEnum;
+import com.joshaby.springboot2backend.entities.enums.EstadoPagamento;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +20,7 @@ public class PagamentoComCartao extends Pagamento {
     private Integer numeroDeParcelas;
 
     public PagamentoComCartao(
-            Integer id, EstadoPagamentoEnum estadoPagamento, Pedido pedido, Integer numeroDeParcelas) {
+            Integer id, EstadoPagamento estadoPagamento, Pedido pedido, Integer numeroDeParcelas) {
 
         super(id, estadoPagamento, pedido);
         this.numeroDeParcelas = numeroDeParcelas;

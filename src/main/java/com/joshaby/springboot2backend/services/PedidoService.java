@@ -3,7 +3,7 @@ package com.joshaby.springboot2backend.services;
 import com.joshaby.springboot2backend.entities.ItemPedido;
 import com.joshaby.springboot2backend.entities.PagamentoComBoleto;
 import com.joshaby.springboot2backend.entities.Pedido;
-import com.joshaby.springboot2backend.entities.enums.EstadoPagamentoEnum;
+import com.joshaby.springboot2backend.entities.enums.EstadoPagamento;
 import com.joshaby.springboot2backend.repositories.ItemPedidoRepository;
 import com.joshaby.springboot2backend.repositories.PagamentoRepository;
 import com.joshaby.springboot2backend.repositories.PedidoRepository;
@@ -48,7 +48,7 @@ public class PedidoService {
         pedido.setId(null);
         pedido.setInstante(new Date());
         pedido.setCliente(clienteService.find(pedido.getCliente().getId()));
-        pedido.getPagamento().setEstadoPagamento(EstadoPagamentoEnum.PEDENTE);
+        pedido.getPagamento().setEstadoPagamento(EstadoPagamento.PEDENTE);
         pedido.getPagamento().setPedido(pedido);
         if (pedido.getPagamento() instanceof PagamentoComBoleto) {
             PagamentoComBoleto pagamento = (PagamentoComBoleto) pedido.getPagamento();

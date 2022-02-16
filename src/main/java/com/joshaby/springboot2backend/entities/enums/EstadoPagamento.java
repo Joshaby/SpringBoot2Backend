@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Getter
 @AllArgsConstructor
-public enum EstadoPagamentoEnum {
+public enum EstadoPagamento {
 
     PEDENTE(1, "Pendene"),
     CANCELADO(2, "Cancelado"),
@@ -17,12 +17,12 @@ public enum EstadoPagamentoEnum {
     private Integer tipo;
     private String descricao;
 
-    public static EstadoPagamentoEnum toEnum(Integer tipo) {
+    public static EstadoPagamento toEnum(Integer tipo) {
         if (tipo == null) {
             return null;
         }
 
-        Optional<EstadoPagamentoEnum> estadoPagemento = Arrays.stream(EstadoPagamentoEnum.values()).filter(
+        Optional<EstadoPagamento> estadoPagemento = Arrays.stream(EstadoPagamento.values()).filter(
                 e -> e.getTipo().equals(tipo)).findFirst();
 
         return estadoPagemento.orElseThrow(() -> new IllegalArgumentException(String.format("Id %s inválido", tipo)));

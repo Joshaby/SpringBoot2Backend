@@ -2,7 +2,7 @@ package com.joshaby.springboot2backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.joshaby.springboot2backend.entities.enums.EstadoPagamentoEnum;
+import com.joshaby.springboot2backend.entities.enums.EstadoPagamento;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -31,13 +31,13 @@ public abstract class Pagamento implements Serializable {
     @Getter(onMethod = @__(@JsonIgnore))
     private Pedido pedido;
 
-    public Pagamento(Integer id, EstadoPagamentoEnum estadoPagemento, Pedido pedido) {
+    public Pagamento(Integer id, EstadoPagamento estadoPagemento, Pedido pedido) {
         this.id = id;
         this.estadoPagamento = (estadoPagemento == null) ? null : estadoPagemento.getTipo();
         this.pedido = pedido;
     }
 
-    public void setEstadoPagamento(EstadoPagamentoEnum estado) {
+    public void setEstadoPagamento(EstadoPagamento estado) {
         this.estadoPagamento = estado.getTipo();
     }
 }

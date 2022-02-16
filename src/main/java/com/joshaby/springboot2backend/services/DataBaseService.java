@@ -1,8 +1,8 @@
 package com.joshaby.springboot2backend.services;
 
 import com.joshaby.springboot2backend.entities.*;
-import com.joshaby.springboot2backend.entities.enums.EstadoPagamentoEnum;
-import com.joshaby.springboot2backend.entities.enums.TipoClienteEnum;
+import com.joshaby.springboot2backend.entities.enums.EstadoPagamento;
+import com.joshaby.springboot2backend.entities.enums.TipoCliente;
 import com.joshaby.springboot2backend.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -99,10 +99,10 @@ public class DataBaseService {
         estadoRepository.saveAll(Arrays.asList(estado1, estado2));
         cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2, cidade3));
 
-        Cliente cliente1 = new Cliente(null, "Maria Silva", "josehenriquebrito55@gmail.com", "36378912377", TipoClienteEnum.PESSOAFISICA, "12345");
+        Cliente cliente1 = new Cliente(null, "Maria Silva", "josehenriquebrito55@gmail.com", "36378912377", TipoCliente.PESSOAFISICA, "12345");
         cliente1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
 
-        Cliente cliente2 = new Cliente(null, "Ana Silva", "josehenriquebrito56756@gmail.com", "51903479070", TipoClienteEnum.PESSOAFISICA, "12345");
+        Cliente cliente2 = new Cliente(null, "Ana Silva", "josehenriquebrito56756@gmail.com", "51903479070", TipoCliente.PESSOAFISICA, "12345");
         cliente2.getTelefones().addAll(Arrays.asList("27389323", "936473393"));
 
         Endereco endereco1 = new Endereco(null, "Rua Flores", "300", "Apto 203", "Jardim", "38220834", cliente1, cidade1);
@@ -122,9 +122,9 @@ public class DataBaseService {
 
         cliente1.getPedidos().addAll(Arrays.asList(pedido1, pedido2));
 
-        Pagamento pagamento1 = new PagamentoComCartao(null, EstadoPagamentoEnum.QUITADO, pedido1, 6);
+        Pagamento pagamento1 = new PagamentoComCartao(null, EstadoPagamento.QUITADO, pedido1, 6);
         pedido1.setPagamento(pagamento1);
-        Pagamento pagamento2 = new PagamentoComBoleto(null, EstadoPagamentoEnum.PEDENTE, pedido2, simpleDateFormat.parse("20/10/2017 00:00"), null);
+        Pagamento pagamento2 = new PagamentoComBoleto(null, EstadoPagamento.PEDENTE, pedido2, simpleDateFormat.parse("20/10/2017 00:00"), null);
         pedido2.setPagamento(pagamento2);
 
         pedidoRepository.saveAll(Arrays.asList(pedido1, pedido2));

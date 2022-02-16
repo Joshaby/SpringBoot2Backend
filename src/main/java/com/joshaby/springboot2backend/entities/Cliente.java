@@ -3,7 +3,7 @@ package com.joshaby.springboot2backend.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.joshaby.springboot2backend.dto.ClienteDTO1;
 import com.joshaby.springboot2backend.dto.ClienteDTO2;
-import com.joshaby.springboot2backend.entities.enums.TipoClienteEnum;
+import com.joshaby.springboot2backend.entities.enums.TipoCliente;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -46,7 +46,7 @@ public class Cliente {
     @Getter(onMethod = @__(@JsonIgnore))
     private Set<Pedido> pedidos = new HashSet<>();
 
-    public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoClienteEnum tipoCliente, String senha) {
+    public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipoCliente, String senha) {
         this.id = id;
         this.nome = nome;
         this.email = email;

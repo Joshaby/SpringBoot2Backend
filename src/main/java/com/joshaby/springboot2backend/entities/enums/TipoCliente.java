@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Getter
 @AllArgsConstructor
-public enum TipoClienteEnum {
+public enum TipoCliente {
 
     PESSOAFISICA(1, "Pessoa Física"),
     PESSOAJURIDICA(2, "Pessoa Jurídica");
@@ -16,11 +16,11 @@ public enum TipoClienteEnum {
     private Integer tipo;
     private String descricao;
 
-    public static TipoClienteEnum toEnum(Integer tipo) {
+    public static TipoCliente toEnum(Integer tipo) {
         if (tipo == null) {
             return null;
         }
-        Optional<TipoClienteEnum> optional = Arrays.stream(TipoClienteEnum.values()).filter(
+        Optional<TipoCliente> optional = Arrays.stream(TipoCliente.values()).filter(
                 t -> t.getTipo().equals(tipo)).findFirst();
 
         return optional.orElseThrow(() -> new IllegalArgumentException(String.format("Id %s inválido", tipo)));
