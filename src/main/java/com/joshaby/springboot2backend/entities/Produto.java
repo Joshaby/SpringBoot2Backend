@@ -30,7 +30,7 @@ public class Produto implements Serializable {
 
     @OneToMany(mappedBy = "id.produto")
     @Getter(onMethod = @__(@JsonIgnore))
-    private Set<ItemPedido> itemPedidos = new HashSet<>();
+    private Set<ItemPedido> itens = new HashSet<>();
 
     public Produto(Integer id, String nome, Double preco) {
         this.id = id;

@@ -1,7 +1,6 @@
 package com.joshaby.springboot2backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,8 +36,8 @@ public class Pedido implements Serializable {
     @JoinColumn(name = "endereco_id")
     private Endereco endereco;
 
-    @OneToMany(mappedBy = "id.pedido")
-    private Set<ItemPedido> itemPedidos = new HashSet<>();
+    @OneToMany(mappedBy = "id.pedido", fetch = FetchType.EAGER)
+    private Set<ItemPedido> itens = new HashSet<>();
 
     public Pedido(Integer id, Date instante, Cliente cliente, Endereco endereco) {
         this.id = id;

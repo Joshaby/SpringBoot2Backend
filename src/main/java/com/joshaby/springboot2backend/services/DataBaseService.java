@@ -11,7 +11,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashSet;
 
 /**
  * Classe de serviço para iniciar massa de dados da aplicação
@@ -132,14 +131,14 @@ public class DataBaseService {
         pagamentoRepository.saveAll(Arrays.asList(pagamento1, pagamento2));
 
         ItemPedido itemPedido1 = new ItemPedido(produto1, pedido1, 0.00, 1, 2000.00);
-        produto1.getItemPedidos().addAll(Collections.singletonList(itemPedido1));
+        produto1.getItens().addAll(Collections.singletonList(itemPedido1));
         ItemPedido itemPedido2 = new ItemPedido(produto3, pedido1, 0.00, 2, 80.00);
-        produto3.getItemPedidos().addAll(Collections.singletonList(itemPedido2));
+        produto3.getItens().addAll(Collections.singletonList(itemPedido2));
         ItemPedido itemPedido3 = new ItemPedido(produto2, pedido2, 100.00, 1, 800.00);
-        produto2.getItemPedidos().addAll(Collections.singletonList(itemPedido3));
+        produto2.getItens().addAll(Collections.singletonList(itemPedido3));
 
-        pedido1.getItemPedidos().addAll(Arrays.asList(itemPedido1, itemPedido2));
-        pedido2.getItemPedidos().addAll(Collections.singletonList(itemPedido3));
+        pedido1.getItens().addAll(Arrays.asList(itemPedido1, itemPedido2));
+        pedido2.getItens().addAll(Collections.singletonList(itemPedido3));
 
         itemPedidoRepository.saveAll(Arrays.asList(itemPedido1, itemPedido2, itemPedido3));
     }

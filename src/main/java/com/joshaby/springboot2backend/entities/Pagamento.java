@@ -36,4 +36,8 @@ public abstract class Pagamento implements Serializable {
         this.estadoPagamento = (estadoPagemento == null) ? null : estadoPagemento.getTipo();
         this.pedido = pedido;
     }
+
+    public void setEstadoPagamento(EstadoPagamentoEnum estado) {
+        this.estadoPagamento = estado.getTipo();
+    }
 }
