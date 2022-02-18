@@ -7,8 +7,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 @Setter
@@ -44,5 +47,26 @@ public class Pedido implements Serializable {
         this.instante = instante;
         this.cliente = cliente;
         this.endereco = endereco;
+    }
+
+    public Double getTotalPedido() {
+        return itens.stream().reduce(0.0, (resultado, item) -> resultado + item.getSubtotal(), Double::sum);
+    }
+
+    @Override
+    public String toString() {
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        StringBuilder pedidoString = new StringBuilder();
+        pedidoString.append(String.format("Número: %d\n", getId()));
+        pedidoString.append(String.format("Instante: %s\n", dateFormat.format(getInstante())));
+        pedidoString.append(String.format("Cliente: %s\n", getCliente().getNome()));
+        pedidoString.append(String.format("Situação: %s\n", getPagamento().getEstadoPagamento().getDescricao()));
+        pedidoString.append("Detalhes:\n");
+        for (ItemPedido item : itens) {
+            pedidoString.append(item.toString()).append("\n");
+        }
+        pedidoString.append(String.format("Valor total: %s\n", numberFormat.format(getTotalPedido())));
+        return pedidoString.toString();
     }
 }

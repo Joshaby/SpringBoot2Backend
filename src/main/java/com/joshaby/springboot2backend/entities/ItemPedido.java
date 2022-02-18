@@ -11,6 +11,8 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 @Setter
 @Getter
@@ -48,4 +50,18 @@ public class ItemPedido implements Serializable {
         id.setPedido(pedido);
     }
 
+    public Double getSubtotal() {
+        return (getPreco() - getDesconto()) * getQuantidade();
+    }
+
+    @Override
+    public String toString() {
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        StringBuilder itemString = new StringBuilder();
+        itemString.append(String.format("Produto: %s\n", id.getProduto().getNome()));
+        itemString.append(String.format("Qtde: %d\n", getQuantidade()));
+        itemString.append(String.format("Preço unitário: %s\n", numberFormat.format(getPreco())));
+        itemString.append(String.format("Subtotal: %s\n", numberFormat.format(getSubtotal())));
+        return itemString.toString();
+    }
 }
