@@ -1,5 +1,6 @@
 package com.joshaby.springboot2backend.dto;
 
+import com.joshaby.springboot2backend.services.validation.ClienteInsert;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.io.Serializable;
 @Setter
 @Getter
 @NoArgsConstructor
+@ClienteInsert
 public class ClienteDTO2 implements Serializable {
 
     @NotEmpty(message = "O nome é obrigatório!")

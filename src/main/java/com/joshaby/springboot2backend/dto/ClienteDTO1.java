@@ -1,6 +1,7 @@
 package com.joshaby.springboot2backend.dto;
 
 import com.joshaby.springboot2backend.entities.Cliente;
+import com.joshaby.springboot2backend.services.validation.ClienteUpdate;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,6 +14,7 @@ import java.io.Serializable;
 @Setter
 @Getter
 @NoArgsConstructor
+@ClienteUpdate
 public class ClienteDTO1 implements Serializable {
 
     private Integer id;
