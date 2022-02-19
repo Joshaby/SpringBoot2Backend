@@ -3,6 +3,7 @@ package com.joshaby.springboot2backend.config;
 import com.joshaby.springboot2backend.services.DataBaseService;
 import com.joshaby.springboot2backend.services.EmailService;
 import com.joshaby.springboot2backend.services.MockEmailService;
+import com.joshaby.springboot2backend.services.SMTPEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,6 @@ public class DataBaseConfig {
 
     @Bean
     public EmailService getEmailService() {
-        return new MockEmailService();
+        return new SMTPEmailService();
     }
 }

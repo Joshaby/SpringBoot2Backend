@@ -12,9 +12,9 @@ public interface EmailService {
 
     void sendEmail(SimpleMailMessage mailMessage);
 
-//    void sendOrderConfirmationHTMLEmail(Pedido pedido);
-//
-//    void sendHTMLEmail(MimeMessage mailMessage);
+    void sendOrderConfirmationHTMLEmail(Pedido pedido);
+
+    void sendHTMLEmail(MimeMessage mailMessage);
 //
 //    void sendNewPasswordEmail(Cliente cliente, String newPassword);
 }
