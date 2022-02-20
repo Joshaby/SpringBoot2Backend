@@ -63,9 +63,7 @@ public class Pedido implements Serializable {
         pedidoString.append(String.format("Cliente: %s\n", getCliente().getNome()));
         pedidoString.append(String.format("Situação: %s\n", getPagamento().getEstadoPagamento().getDescricao()));
         pedidoString.append("Detalhes:\n");
-        for (ItemPedido item : itens) {
-            pedidoString.append(item.toString()).append("\n");
-        }
+        itens.stream().map(item -> pedidoString.append(item.toString()).append("\n"));
         pedidoString.append(String.format("Valor total: %s\n", numberFormat.format(getTotalPedido())));
         return pedidoString.toString();
     }
