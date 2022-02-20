@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ControllerUtils {
+public class ControllersUtils {
 
     public static String paramDecoder(String param) {
         return URLDecoder.decode(param, StandardCharsets.UTF_8);

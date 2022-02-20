@@ -11,7 +11,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping(value = "/pedidos")
-public class PedidoResource {
+public class PedidoController {
 
     @Autowired
     public PedidoService service;
