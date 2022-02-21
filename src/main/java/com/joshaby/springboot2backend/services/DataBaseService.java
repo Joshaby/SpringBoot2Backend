@@ -5,6 +5,7 @@ import com.joshaby.springboot2backend.entities.enums.EstadoPagamento;
 import com.joshaby.springboot2backend.entities.enums.TipoCliente;
 import com.joshaby.springboot2backend.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -12,36 +13,39 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Collections;
 
-/**
- * Classe de serviço para iniciar massa de dados da aplicação
- * @author José Henrique
- */
 @Service
 public class DataBaseService {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
+
     @Autowired
     private ProdutoRepository produtoRepository;
+
     @Autowired
     private EstadoRepository estadoRepository;
+
     @Autowired
     private CidadeRepository cidadeRepository;
+
     @Autowired
     private ClienteRepository clienteRepository;
+
     @Autowired
     private EnderecoRepository enderecoRepository;
+
     @Autowired
     private PedidoRepository pedidoRepository;
+
     @Autowired
     private PagamentoRepository pagamentoRepository;
+
     @Autowired
     private ItemPedidoRepository itemPedidoRepository;
 
-    /**
-     * Método que irá instânciar as classes de domínio e adiciona-las ao banco
-     * @throws ParseException
-     */
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
+
     public void initializeDataBase() throws ParseException {
         Categoria categoria1 = new Categoria(null, "Informática");
         Categoria categoria2 = new Categoria(null, "Escritório");
@@ -99,10 +103,10 @@ public class DataBaseService {
         estadoRepository.saveAll(Arrays.asList(estado1, estado2));
         cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2, cidade3));
 
-        Cliente cliente1 = new Cliente(null, "Maria Silva", "josehenriquebrito55@gmail.com", "36378912377", TipoCliente.PESSOAFISICA, "12345");
+        Cliente cliente1 = new Cliente(null, "Maria Silva", "josehenriquebrito55@gmail.com", "36378912377", TipoCliente.PESSOAFISICA, passwordEncoder.encode("12345"));
         cliente1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
 
-        Cliente cliente2 = new Cliente(null, "Ana Silva", "josehenriquebrito56756@gmail.com", "51903479070", TipoCliente.PESSOAFISICA, "12345");
+        Cliente cliente2 = new Cliente(null, "Ana Silva", "josehenriquebrito56756@gmail.com", "51903479070", TipoCliente.PESSOAFISICA, passwordEncoder.encode("12345"));
         cliente2.getTelefones().addAll(Arrays.asList("27389323", "936473393"));
 
         Endereco endereco1 = new Endereco(null, "Rua Flores", "300", "Apto 203", "Jardim", "38220834", cliente1, cidade1);
