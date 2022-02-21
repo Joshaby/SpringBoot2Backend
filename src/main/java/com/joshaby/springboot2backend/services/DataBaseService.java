@@ -2,6 +2,7 @@ package com.joshaby.springboot2backend.services;
 
 import com.joshaby.springboot2backend.entities.*;
 import com.joshaby.springboot2backend.entities.enums.EstadoPagamento;
+import com.joshaby.springboot2backend.entities.enums.Perfil;
 import com.joshaby.springboot2backend.entities.enums.TipoCliente;
 import com.joshaby.springboot2backend.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,6 +105,7 @@ public class DataBaseService {
         cidadeRepository.saveAll(Arrays.asList(cidade1, cidade2, cidade3));
 
         Cliente cliente1 = new Cliente(null, "Maria Silva", "josehenriquebrito55@gmail.com", "36378912377", TipoCliente.PESSOAFISICA, passwordEncoder.encode("12345"));
+        cliente1.addPerfil(Perfil.ADMIN);
         cliente1.getTelefones().addAll(Arrays.asList("27363323", "93838393"));
 
         Cliente cliente2 = new Cliente(null, "Ana Silva", "josehenriquebrito56756@gmail.com", "51903479070", TipoCliente.PESSOAFISICA, passwordEncoder.encode("12345"));
