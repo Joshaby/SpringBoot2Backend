@@ -1,15 +1,19 @@
 package com.joshaby.springboot2backend.config;
 
+import com.joshaby.springboot2backend.security.JWTAuthenticationFilter;
+import com.joshaby.springboot2backend.security.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -38,7 +42,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     };
 
     @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
     private Environment environment;
+
+    @Autowired
+    private JWTUtil jwtUtil;
 
     @Override
     protected void configure(HttpSecurity security) throws Exception {
@@ -51,7 +61,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, PUBLIC_MATCHES_GET).permitAll()
                 .antMatchers(PUBLIC_MATCHES).permitAll()
                 .anyRequest().authenticated();
+        security.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
         security.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder managerBuilder) throws Exception {
+        managerBuilder.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
     }
 
     @Bean
