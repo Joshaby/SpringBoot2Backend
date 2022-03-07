@@ -1,7 +1,9 @@
 SpringBoot2Backend
 =====
 
-Repositório do backend do curso Spring Boot, Hibernate, REST, Ionic, JWT, S3, MySQL, MongoDB na Udemy por Nélio Alves
+Repositório do backend do curso [Spring Boot, Hibernate, REST, Ionic, JWT, S3, MySQL, MongoDB](https://www.udemy.com/course/spring-boot-ionic/) na Udemy por Nélio Alves.
+
+Backend feito em Java para promover implementação de um sistema de compra de produtos.
 
 Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
 
@@ -38,7 +40,7 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
 ### Clientes
 
 - `/clientes` - GET: Obtém todos os clientes
-- `/clientes` - POST: Cadastro de cliente
+- `/clientes` - POST: Cadastro de cliente. Exemplo:
 
     ```
     {
@@ -59,7 +61,7 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
     ``` 
 
 - `/clientes/{id}` - GET: Obtém um cliente por id
-- `/clientes/{id}` - PUT: Atualização de cliente por id
+- `/clientes/{id}` - PUT: Atualização de cliente por id. Exemplo:
 
     ```
     {
@@ -74,7 +76,7 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
 ### Categorias
 
 - `/categorias` - GET: Obtém todos as categorias
-- `/categorias` - POST: Cadastro de categoria
+- `/categorias` - POST: Cadastro de categoria. Exemplo:
 
     ```
     {
@@ -83,7 +85,7 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
     ```
 
 - `/categorias/{id}` - GET: Obtém uma categoria por id
-- `/categorias/{id}` - PUT: Atualização de categoria por id
+- `/categorias/{id}` - PUT: Atualização de categoria por id. Exemplo:
 
     ```
     {
@@ -91,13 +93,13 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
     }
     ```
 
-- `/categorias/{id}` - DELETE: Deleção de categoria por id
+- `/categorias/{id}` - DELETE: Deleção de categoria por id. Exemplo:
 - `/categorias/pages?page=0&linesPerPage=24&direction=ASC&orderBy=id` - GET: Obtém categorias em uma página
 
 ### Pedidos
 
 - `/pedidos/{id}` - GET: Obtém todos um pedido por id
-- `/pedidos/{id}` - POST: Cadastra um pedido por id
+- `/pedidos/{id}` - POST: Cadastra um pedido por id. Exemplo:
 
     ```
     {
@@ -134,13 +136,19 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
 - `/produtos?nome=""&categorias=""&page=0&linesPerPage=24&direction=ASC&orderBy=nome` - GET: Obtém produtos em uma página
 
 ### Login
-- `/login` - POST: Faz login de um usuário com email e senha
+- `/login` - POST: Faz login de um usuário com email e senha. Exemplo:
 
     ```
     {
         "email: "donniedarko@gmail.com",
         "senha": donnie123
     }
+    ```
+  
+    O token JWT será retornado no campo Authorization no cabeçalho da resposta da requisição. Exemplo:
+
+    ```
+    Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3NlaGVucmlxdWVicml0bzU1QGdtYWlsLmNvbSIsImV4cCI6MTY0NjYxMTYyMX0.d_d0fm5DkHSjdjE8vw6-349pAT8fJTt97Iu7OiMBq_hdpFkzNMmhP5Im6PvRxPhKm9rBynXXvziZeqkKiBpAUg
     ```
 
 [//]: # (### Auth)
@@ -151,8 +159,12 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
 
 ## Notas
 
-Endpoints `/produtos/**`, `/categorias/**` e `/clientes/**` não necessitam de autenticação
-O endpoint `/h2-console` só funciona no ambiente de test
+Endpoints `/produtos/**`, `/categorias/**` e `/clientes/**` não necessitam de autenticação. O endpoint `/h2-console` só funciona no ambiente de test.
+
+### Como acessar endpoints autenticados?
+
+Para acessar um endpoint autenticado, sua requisição precisar ter o campo Authorization com o token no cabeçalho. 
+O valor do campo deve começar com a palavra Bearer seguido do token.
 
 ## Tecnologias
 
