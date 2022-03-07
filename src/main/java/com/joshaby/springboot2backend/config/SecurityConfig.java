@@ -1,6 +1,7 @@
 package com.joshaby.springboot2backend.config;
 
 import com.joshaby.springboot2backend.security.JWTAuthenticationFilter;
+import com.joshaby.springboot2backend.security.JWTAuthorizationFilter;
 import com.joshaby.springboot2backend.security.util.JWTUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -32,8 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String[] PUBLIC_MATCHES_GET = {
             "/produtos/**",
-            "/categorias/**",
-            "/clientes/**"
+            "/categorias/**"
     };
 
     private static final String[] PUBLIC_MATCHES_POST = {
@@ -62,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(PUBLIC_MATCHES).permitAll()
                 .anyRequest().authenticated();
         security.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
+        security.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
         security.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
