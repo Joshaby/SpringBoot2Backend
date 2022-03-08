@@ -16,8 +16,11 @@ import java.util.stream.Collectors;
 public class UserDetailsImpl implements UserDetails {
 
     private Integer id;
+
     private String email;
+
     private String senha;
+
     private Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(Integer id, String email, String senha, Set<Perfil> perfis) {

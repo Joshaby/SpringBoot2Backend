@@ -48,9 +48,9 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
         "email": "donniedarko@gmail.com",
         "cpfOuCnpj": "294.563.110-58",
         "tipoCliente": 1,
-        "senha": donnie123,
+        "senha": "donnie123",
         "logradouro": "Rua",
-        "numero: "9696",
+        "numero": "9696",
         "complemento": "Ao lado da padaria Pão Gostoso",
         "bairro": "Barro duro",
         "cep": "23213-343",
@@ -110,7 +110,7 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
             "id": 1
         },
         "pagamento": {
-            "numeroDeParcelas: 10,
+            "numeroDeParcelas": 10,
             "@type": "pagamentoComCartao
         },
         "itens": [
@@ -140,8 +140,8 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
 
     ```
     {
-        "email: "donniedarko@gmail.com",
-        "senha": donnie123
+        "email": "josehenriquebrito55@gmail.com",
+        "senha": "12345"
     }
     ```
   
