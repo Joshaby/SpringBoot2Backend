@@ -1,14 +1,20 @@
 package com.joshaby.springboot2backend.services;
 
+import com.joshaby.springboot2backend.entities.Cliente;
 import com.joshaby.springboot2backend.entities.ItemPedido;
 import com.joshaby.springboot2backend.entities.PagamentoComBoleto;
 import com.joshaby.springboot2backend.entities.Pedido;
 import com.joshaby.springboot2backend.entities.enums.EstadoPagamento;
+import com.joshaby.springboot2backend.entities.enums.Perfil;
 import com.joshaby.springboot2backend.repositories.ItemPedidoRepository;
 import com.joshaby.springboot2backend.repositories.PagamentoRepository;
 import com.joshaby.springboot2backend.repositories.PedidoRepository;
+import com.joshaby.springboot2backend.security.User;
+import com.joshaby.springboot2backend.services.exceptions.AuthorizationException;
 import com.joshaby.springboot2backend.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,6 +45,9 @@ public class PedidoService {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private UserService userService;
+
     public Pedido find(Integer id) {
         Optional<Pedido> pedido = repository.findById(id);
         return pedido.orElseThrow(
@@ -68,5 +77,14 @@ public class PedidoService {
         itemPedidoRepository.saveAll(pedido.getItens());
         emailService.sendOrderConfirmationHTMLEmail(pedido);
         return pedido;
+    }
+
+    public Page<Pedido> findPage(Pageable page) {
+        User user = userService.getUserAuthenticated();
+        if (user == null) {
+            throw new AuthorizationException("Acesso negado");
+        }
+        Cliente cliente = clienteService.find(user.getId());
+        return repository.findByCliente(cliente, page);
     }
 }
