@@ -1,8 +1,11 @@
 package com.joshaby.springboot2backend.services;
 
 import com.joshaby.springboot2backend.entities.Cliente;
+import com.joshaby.springboot2backend.entities.enums.Perfil;
 import com.joshaby.springboot2backend.repositories.ClienteRepository;
 import com.joshaby.springboot2backend.repositories.EnderecoRepository;
+import com.joshaby.springboot2backend.security.User;
+import com.joshaby.springboot2backend.services.exceptions.AuthorizationException;
 import com.joshaby.springboot2backend.services.exceptions.DataIntegrityException;
 import com.joshaby.springboot2backend.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +27,14 @@ public class ClienteService {
     @Autowired
     private EnderecoRepository enderecoRepository;
 
+    @Autowired
+    private UserService userService;
+
     public Cliente find(Integer id) {
+        User user = userService.getUserAuthenticated();
+        if ((user == null || !user.hasHole(Perfil.ADMIN)) && !id.equals(user.getId())) {
+            throw new AuthorizationException("Acesso negado");
+        }
         Optional<Cliente> cliente = repository.findById(id);
         return cliente.orElseThrow(
                 () -> new ObjectNotFoundException(String.format("Objeto %d não encontrado! Tipo: %s", id, Cliente.class.getName())));

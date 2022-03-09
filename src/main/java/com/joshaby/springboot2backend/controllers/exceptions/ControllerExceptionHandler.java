@@ -1,5 +1,6 @@
 package com.joshaby.springboot2backend.controllers.exceptions;
 
+import com.joshaby.springboot2backend.services.exceptions.AuthorizationException;
 import com.joshaby.springboot2backend.services.exceptions.DataIntegrityException;
 import com.joshaby.springboot2backend.services.exceptions.ObjectNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -37,5 +38,12 @@ public class ControllerExceptionHandler {
             error.addError(fieldError.getField(), fieldError.getDefaultMessage());
         }
         return ResponseEntity.badRequest().body(error);
+    }
+
+    @ExceptionHandler(AuthorizationException.class)
+    public ResponseEntity<StandartError> authorization(AuthorizationException exception) {
+        StandartError error = new StandartError(
+                HttpStatus.FORBIDDEN.value(), exception.getMessage(), System.currentTimeMillis());
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(error);
     }
 }

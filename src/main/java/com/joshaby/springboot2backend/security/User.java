@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Getter
 @Setter
-public class UserDetailsImpl implements UserDetails {
+public class User implements UserDetails {
 
     private Integer id;
 
@@ -23,7 +23,7 @@ public class UserDetailsImpl implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Integer id, String email, String senha, Set<Perfil> perfis) {
+    public User(Integer id, String email, String senha, Set<Perfil> perfis) {
         this.id = id;
         this.email = email;
         this.senha = senha;
@@ -64,5 +64,9 @@ public class UserDetailsImpl implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public boolean hasHole(Perfil perfil) {
+        return authorities.contains(new SimpleGrantedAuthority(perfil.getDescricao()));
     }
 }
