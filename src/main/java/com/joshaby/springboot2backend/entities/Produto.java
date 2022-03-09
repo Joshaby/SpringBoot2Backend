@@ -24,12 +24,12 @@ public class Produto implements Serializable {
 
     private Double preco;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "produtos")
-    @Getter(onMethod = @__(@JsonIgnore))
     private Set<Categoria> categorias = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "id.produto")
-    @Getter(onMethod = @__(@JsonIgnore))
     private Set<ItemPedido> itens = new HashSet<>();
 
     public Produto(Integer id, String nome, Double preco) {

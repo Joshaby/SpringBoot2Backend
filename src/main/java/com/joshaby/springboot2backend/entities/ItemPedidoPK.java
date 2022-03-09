@@ -18,9 +18,9 @@ import java.io.Serializable;
 @Embeddable
 public class ItemPedidoPK implements Serializable {
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pedido_id")
-    @Getter(onMethod = @__(@JsonIgnore))
     private Pedido pedido;
 
     @ManyToOne

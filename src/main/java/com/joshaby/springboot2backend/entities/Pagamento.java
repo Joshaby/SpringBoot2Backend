@@ -25,10 +25,10 @@ public abstract class Pagamento implements Serializable {
 
     private Integer estadoPagamento;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "pedido_id")
     @MapsId
-    @Getter(onMethod = @__(@JsonIgnore))
     private Pedido pedido;
 
     public Pagamento(Integer id, EstadoPagamento estadoPagemento, Pedido pedido) {

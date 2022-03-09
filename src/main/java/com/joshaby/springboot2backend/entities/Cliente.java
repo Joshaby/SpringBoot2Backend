@@ -34,7 +34,7 @@ public class Cliente {
 
     private Integer tipoCliente;
 
-    @Getter(onMethod = @__(@JsonIgnore))
+    @JsonIgnore
     private String senha;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -48,8 +48,8 @@ public class Cliente {
     @CollectionTable(name = "tb_telefones")
     private Set<String> telefones = new HashSet<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente")
-    @Getter(onMethod = @__(@JsonIgnore))
     private Set<Pedido> pedidos = new HashSet<>();
 
     public Cliente(Integer id, String nome, String email, String cpfOuCnpj, TipoCliente tipoCliente, String senha) {

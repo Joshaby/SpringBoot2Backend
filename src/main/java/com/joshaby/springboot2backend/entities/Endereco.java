@@ -31,9 +31,9 @@ public class Endereco implements Serializable {
 
     private String cep;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    @Getter(onMethod = @__(@JsonIgnore))
     private Cliente cliente;
 
     @ManyToOne

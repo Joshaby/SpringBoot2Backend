@@ -23,8 +23,8 @@ public class Estado implements Serializable {
 
     private String nome;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "estado")
-    @Getter(onMethod = @__(@JsonIgnore))
     private Set<Cidade> cidades = new HashSet<>();
 
     public Estado(Integer id, String nome) {
