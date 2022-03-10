@@ -151,20 +151,31 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
     Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqb3NlaGVucmlxdWVicml0bzU1QGdtYWlsLmNvbSIsImV4cCI6MTY0NjYxMTYyMX0.d_d0fm5DkHSjdjE8vw6-349pAT8fJTt97Iu7OiMBq_hdpFkzNMmhP5Im6PvRxPhKm9rBynXXvziZeqkKiBpAUg
     ```
 
-[//]: # (### Auth)
+### Auth
 
-[//]: # (- `/auth/refresh_token` - POST: Gera um novo token pra um usuário logado com token prestes a expirar)
+- `/auth/refresh_token` - POST: Gera um novo token pra um usuário logado com token prestes a expirar(necessita do antigo token no cabeçalho da requisição)
 
-[//]: # (- `/auth/forgot` - POST: Gera um nova senha e a envia por email)
+- `/auth/forgot` - POST: Gera um nova senha e a envia por email
+
+  ```
+  {
+    "email": "donniedarko@gmail.com"
+  }
+  ```
 
 ## Notas
 
-Endpoints `/produtos/**`, `/categorias/**` e `/clientes/**` não necessitam de autenticação. O endpoint `/h2-console` só funciona no ambiente de test.
+Endpoints `/produtos/**`, `/categorias/**`, `/clientes/**` e `/auth/forgot/**` não necessitam de autenticação. O endpoint `/h2-console` só funciona no ambiente de test.
 
 ### Como acessar endpoints autenticados?
 
 Para acessar um endpoint autenticado, sua requisição precisar ter o campo Authorization com o token no cabeçalho. 
 O valor do campo deve começar com a palavra Bearer seguido do token.
+
+### Como usar o serviço de envio de email?
+
+Para usar o serviço de envio de email, você precisa liberar o uso de email em aplicativos que não sejam Google(use os links: https://www.google.com/settings/security/lesssecureapps e https://accounts.google.com/b/0/DisplayUnlockCaptcha).
+Após isso você precisa definir seu email e senha no arquivo application.properties.
 
 ## Tecnologias
 
@@ -187,6 +198,8 @@ O valor do campo deve começar com a palavra Bearer seguido do token.
 - MySQL Connector 8.0.28
 
 - JWT Support For The JVM 0.9.1
+
+- Apache Commons Lang3 3.12.0
 
 
 

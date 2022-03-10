@@ -1,5 +1,6 @@
 package com.joshaby.springboot2backend.services;
 
+import com.joshaby.springboot2backend.entities.Cliente;
 import com.joshaby.springboot2backend.entities.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,6 +41,12 @@ public abstract class AbstractEmailService implements EmailService {
         }
     }
 
+    @Override
+    public void sendNewPasswordEmail(Cliente cliente, String newPassword) {
+        SimpleMailMessage mailMessage = prepareNewPasswordEmail(cliente, newPassword);
+        sendEmail(mailMessage);
+    }
+
     protected SimpleMailMessage prepareMailMessage(Pedido pedido) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(pedido.getCliente().getEmail());
@@ -58,6 +65,16 @@ public abstract class AbstractEmailService implements EmailService {
         messageHelper.setSubject(String.format("Pedido confirmado! Código: %d", pedido.getId()));
         messageHelper.setSentDate(new Date(System.currentTimeMillis()));
         messageHelper.setText(pedidoToHtml(pedido), true);
+        return mailMessage;
+    }
+
+    protected SimpleMailMessage prepareNewPasswordEmail(Cliente cliente, String newPassword) {
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(cliente.getEmail());
+        mailMessage.setFrom(sender);
+        mailMessage.setSubject("Solicitação de nova senha");
+        mailMessage.setSentDate(new Date(System.currentTimeMillis()));
+        mailMessage.setText(String.format("Nova senha: %s", newPassword));
         return mailMessage;
     }
 
