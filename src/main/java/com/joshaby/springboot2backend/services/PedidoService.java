@@ -5,7 +5,6 @@ import com.joshaby.springboot2backend.entities.ItemPedido;
 import com.joshaby.springboot2backend.entities.PagamentoComBoleto;
 import com.joshaby.springboot2backend.entities.Pedido;
 import com.joshaby.springboot2backend.entities.enums.EstadoPagamento;
-import com.joshaby.springboot2backend.entities.enums.Perfil;
 import com.joshaby.springboot2backend.repositories.ItemPedidoRepository;
 import com.joshaby.springboot2backend.repositories.PagamentoRepository;
 import com.joshaby.springboot2backend.repositories.PedidoRepository;

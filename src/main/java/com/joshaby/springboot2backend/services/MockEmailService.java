@@ -1,10 +1,9 @@
 package com.joshaby.springboot2backend.services;
 
+import jakarta.mail.internet.MimeMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.mail.SimpleMailMessage;
-
-import javax.mail.internet.MimeMessage;
 
 public class MockEmailService extends AbstractEmailService {
 

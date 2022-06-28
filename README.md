@@ -181,25 +181,27 @@ Após isso você precisa definir seu email e senha no arquivo application.proper
 
 - Java 17
 
-- Spring Boot 2.6.2
+- Spring Boot 3.0.0-SNAPSHOT
 
-- Spring Framework 5.13.14
+- Spring Framework 6.0.0-SNAPSHOT
 
-- Spring Data JPA 2.6.0
+- Spring Data JPA 3.0.0-M4
 
-- Spring Security 5.6.1
+- Spring Security 6.0.0-M5
 
-- Thymeleaf 3.0.14
+- Thymeleaf 3.1.0-M2
 
-- Lombok 1.18.22
+- Lombok 1.18.24
 
-- H2 2.1.210
+- H2 2.1.212
 
-- MySQL Connector 8.0.28
+- MySQL Connector 8.0.29
 
 - JWT Support For The JVM 0.9.1
 
 - Apache Commons Lang3 3.12.0
+
+- Simple Logging Facade for Java (SLF4J) 1.7.36
 
 
 
