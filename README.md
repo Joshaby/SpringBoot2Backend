@@ -181,15 +181,15 @@ Após isso você precisa definir seu email e senha no arquivo application.proper
 
 - Java 17
 
-- Spring Boot 2.6.2
+- Spring Boot 2.7.2
 
-- Spring Framework 5.13.14
+- Spring Framework 5.13.22
 
-- Spring Data JPA 2.6.0
+- Spring Data JPA 2.7.2
 
-- Spring Security 5.6.1
+- Spring Security 5.7.2
 
-- Thymeleaf 3.0.14
+- Thymeleaf 3.0.15
 
 - Lombok 1.18.22
 
