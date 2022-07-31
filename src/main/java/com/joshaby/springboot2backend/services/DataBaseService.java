@@ -6,7 +6,7 @@ import com.joshaby.springboot2backend.entities.enums.Perfil;
 import com.joshaby.springboot2backend.entities.enums.TipoCliente;
 import com.joshaby.springboot2backend.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -45,7 +45,7 @@ public class DataBaseService {
     private ItemPedidoRepository itemPedidoRepository;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     public void initializeDataBase() throws ParseException {
         Categoria categoria1 = new Categoria(null, "Informática");
