@@ -5,11 +5,10 @@ import com.joshaby.springboot2backend.entities.ItemPedido;
 import com.joshaby.springboot2backend.entities.PagamentoComBoleto;
 import com.joshaby.springboot2backend.entities.Pedido;
 import com.joshaby.springboot2backend.entities.enums.EstadoPagamento;
-import com.joshaby.springboot2backend.entities.enums.Perfil;
 import com.joshaby.springboot2backend.repositories.ItemPedidoRepository;
 import com.joshaby.springboot2backend.repositories.PagamentoRepository;
 import com.joshaby.springboot2backend.repositories.PedidoRepository;
-import com.joshaby.springboot2backend.security.User;
+import com.joshaby.springboot2backend.security.UserDetailsImpl;
 import com.joshaby.springboot2backend.services.exceptions.AuthorizationException;
 import com.joshaby.springboot2backend.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,11 +79,11 @@ public class PedidoService {
     }
 
     public Page<Pedido> findPage(Pageable page) {
-        User user = userService.getUserAuthenticated();
-        if (user == null) {
+        UserDetailsImpl userDetailsImpl = userService.getUserAuthenticated();
+        if (userDetailsImpl == null) {
             throw new AuthorizationException("Acesso negado");
         }
-        Cliente cliente = clienteService.find(user.getId());
+        Cliente cliente = clienteService.find(userDetailsImpl.getId());
         return repository.findByCliente(cliente, page);
     }
 }

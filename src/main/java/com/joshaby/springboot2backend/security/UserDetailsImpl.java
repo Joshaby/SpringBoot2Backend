@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Getter
 @Setter
-public class User implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
 
     private Integer id;
 
@@ -23,7 +23,7 @@ public class User implements UserDetails {
 
     private Collection<? extends GrantedAuthority> authorities;
 
-    public User(Integer id, String email, String senha, Set<Perfil> perfis) {
+    public UserDetailsImpl(Integer id, String email, String senha, Set<Perfil> perfis) {
         this.id = id;
         this.email = email;
         this.senha = senha;

@@ -2,7 +2,7 @@ package com.joshaby.springboot2backend.services;
 
 import com.joshaby.springboot2backend.entities.Cliente;
 import com.joshaby.springboot2backend.repositories.ClienteRepository;
-import com.joshaby.springboot2backend.security.User;
+import com.joshaby.springboot2backend.security.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -21,6 +21,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (cliente == null) {
             throw new UsernameNotFoundException(String.format("Usuário com id %d inválido", cliente.getId()));
         }
-        return new User(cliente.getId(), cliente.getEmail(), cliente.getSenha(), cliente.getPerfis());
+        return new UserDetailsImpl(cliente.getId(), cliente.getEmail(), cliente.getSenha(), cliente.getPerfis());
     }
 }

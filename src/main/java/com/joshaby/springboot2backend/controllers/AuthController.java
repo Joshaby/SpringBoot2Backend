@@ -1,7 +1,7 @@
 package com.joshaby.springboot2backend.controllers;
 
 import com.joshaby.springboot2backend.dto.EmailDTO;
-import com.joshaby.springboot2backend.security.User;
+import com.joshaby.springboot2backend.security.UserDetailsImpl;
 import com.joshaby.springboot2backend.security.util.JWTUtil;
 import com.joshaby.springboot2backend.services.AuthService;
 import com.joshaby.springboot2backend.services.UserService;
@@ -26,8 +26,8 @@ public class AuthController {
 
     @PostMapping(value = "/refresh_token")
     public void refreshToken(HttpServletResponse response) {
-        User user = userService.getUserAuthenticated();
-        String token = jwtUtil.generateToken(user.getUsername());
+        UserDetailsImpl userDetailsImpl = userService.getUserAuthenticated();
+        String token = jwtUtil.generateToken(userDetailsImpl.getUsername());
         response.addHeader("Authorization", "Bearer " + token);
     }
 

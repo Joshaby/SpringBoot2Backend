@@ -4,7 +4,7 @@ import com.joshaby.springboot2backend.entities.Cliente;
 import com.joshaby.springboot2backend.entities.enums.Perfil;
 import com.joshaby.springboot2backend.repositories.ClienteRepository;
 import com.joshaby.springboot2backend.repositories.EnderecoRepository;
-import com.joshaby.springboot2backend.security.User;
+import com.joshaby.springboot2backend.security.UserDetailsImpl;
 import com.joshaby.springboot2backend.services.exceptions.AuthorizationException;
 import com.joshaby.springboot2backend.services.exceptions.DataIntegrityException;
 import com.joshaby.springboot2backend.services.exceptions.ObjectNotFoundException;
@@ -31,8 +31,8 @@ public class ClienteService {
     private UserService userService;
 
     public Cliente find(Integer id) {
-        User user = userService.getUserAuthenticated();
-        if ((user == null || !user.hasHole(Perfil.ADMIN)) && !id.equals(user.getId())) {
+        UserDetailsImpl userDetailsImpl = userService.getUserAuthenticated();
+        if ((userDetailsImpl == null || !userDetailsImpl.hasHole(Perfil.ADMIN)) && !id.equals(userDetailsImpl.getId())) {
             throw new AuthorizationException("Acesso negado");
         }
         Optional<Cliente> cliente = repository.findById(id);
