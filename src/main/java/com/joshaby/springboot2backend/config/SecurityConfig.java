@@ -30,7 +30,8 @@ import java.util.Arrays;
 public class SecurityConfig {
 
     private static final String[] PUBLIC_MATCHES = {
-            "/h2-console/**"
+            "/h2-console/**",
+            "/openapi/**"
     };
 
     private static final String[] PUBLIC_MATCHES_GET = {
