@@ -12,13 +12,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "/pedidos")
+@RequestMapping("/pedidos")
 public class PedidoController {
 
     @Autowired
     public PedidoService service;
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public Pedido find(@PathVariable Integer id) {
         return service.find(id);
     }
@@ -30,7 +30,7 @@ public class PedidoController {
         return ResponseEntity.created(uri).build();
     }
 
-    @GetMapping(value = "/pages")
+    @GetMapping("/page")
     public Page<Pedido> findPage(Pageable page) {
         return service.findPage(page);
     }

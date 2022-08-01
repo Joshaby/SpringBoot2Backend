@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "/auth")
+@RequestMapping("/auth")
 public class AuthController {
 
     @Autowired
@@ -24,14 +24,14 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @PostMapping(value = "/refresh_token")
+    @PostMapping("/refresh_token")
     public void refreshToken(HttpServletResponse response) {
         UserDetailsImpl userDetailsImpl = userService.getUserAuthenticated();
         String token = jwtUtil.generateToken(userDetailsImpl.getUsername());
         response.addHeader("Authorization", "Bearer " + token);
     }
 
-    @PostMapping(value = "/forgot")
+    @PostMapping("/forgot")
     public void forgot(@Valid @RequestBody EmailDTO dto) {
         authService.sendNewPassword(dto.getEmail());
     }

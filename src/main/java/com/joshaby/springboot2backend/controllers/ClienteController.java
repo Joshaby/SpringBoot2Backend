@@ -18,13 +18,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/clientes")
+@RequestMapping("/clientes")
 public class ClienteController {
 
     @Autowired
     private ClienteService service;
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public Cliente find(@PathVariable Integer id) {
         return service.find(id);
     }
@@ -36,14 +36,14 @@ public class ClienteController {
         return ResponseEntity.created(uri).build();
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO1 dto, @PathVariable Integer id) {
         dto.setId(id);
         service.update(new Cliente(dto));
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
@@ -56,7 +56,7 @@ public class ClienteController {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @GetMapping(value = "/page")
+    @GetMapping("/page")
     public Page<ClienteDTO1> findPage(Pageable pageable) {
         return service.findPage(pageable).map(ClienteDTO1::new);
     }

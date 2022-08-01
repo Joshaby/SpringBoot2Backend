@@ -17,13 +17,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/categorias")
+@RequestMapping("/categorias")
 public class CategoriaController {
 
     @Autowired
     private CategoriaService service;
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public Categoria find(@PathVariable Integer id) {
         return service.find(id);
     }
@@ -38,7 +38,7 @@ public class CategoriaController {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @PutMapping(value = "/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Void> update(@Valid @RequestBody CategoriaDTO dto, @PathVariable Integer id) {
         dto.setId(id);
         Categoria categoria = service.update(new Categoria(dto));
@@ -46,7 +46,7 @@ public class CategoriaController {
     }
 
     @PreAuthorize("hasAnyRole('ADMIN')")
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
@@ -57,7 +57,7 @@ public class CategoriaController {
         return service.findAll().stream().map(CategoriaDTO::new).collect(Collectors.toList());
     }
 
-    @GetMapping(value = "/page")
+    @GetMapping("/page")
     public Page<CategoriaDTO> findPage(Pageable pageable) {
         return service.findPage(pageable).map(CategoriaDTO::new);
     }

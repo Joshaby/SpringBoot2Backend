@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/produtos")
+@RequestMapping("/produtos")
 public class ProdutoController {
 
     @Autowired
     private ProdutoService service;
 
-    @GetMapping(value = "/{id}")
+    @GetMapping("/{id}")
     public Produto find(@PathVariable Integer id) {
         return service.find(id);
     }
 
-    @GetMapping(value = "/pages")
+    @GetMapping("/page")
     public Page<ProdutoDTO> findPage(
             @RequestParam(value = "nome", defaultValue = "") String nome,
             @RequestParam(value = "categorias", defaultValue = "") String categorias,
