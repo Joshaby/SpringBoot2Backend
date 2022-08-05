@@ -111,7 +111,7 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
         },
         "pagamento": {
             "numeroDeParcelas": 10,
-            "@type": "pagamentoComCartao
+            "@type": "pagamentoComCartao"
         },
         "itens": [
             {
@@ -121,12 +121,12 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
                 }
             },
             {
-                "quantidade: 4,
+                "quantidade": 4,
                 "produto": {
                     "id": 2
                 }
             }
-        }
+        ]
     }
     ```
 
@@ -185,7 +185,7 @@ Após isso você precisa definir seu email e senha no arquivo application.proper
 
 - Spring Framework 5.13.22
 
-- Spring Data JPA 2.7.2
+- Spring Data 2.7.2
 
 - Spring Security 5.7.2
 
@@ -197,10 +197,8 @@ Após isso você precisa definir seu email e senha no arquivo application.proper
 
 - MySQL Connector 8.0.28
 
-- JWT Support For The JVM 0.9.1
+- Java JWT: JSON Web Token for Java and Android 0.11.5
 
 - Apache Commons Lang3 3.12.0
 
-
-
-
+- Swagger com SpringDoc Open API v3 1.6.9
