@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/clientes")
-@Tag(description = "providencia um CRUD para Clientes", name = "Cliente Controller")
+@Tag(name = "Cliente Controller", description = "providencia um CRUD para Clientes")
 public class ClienteController {
 
     @Autowired
@@ -32,7 +32,7 @@ public class ClienteController {
     @Operation(
             summary = "Get Cliente",
             description = "Retorna um Cliente a partir de um ID - Necessita de autenticação por token JWT",
-            security = {@SecurityRequirement(name = "bearer-key")})
+            security = @SecurityRequirement(name = "bearer-key"))
     public Cliente find(@PathVariable Integer id) {
         return service.find(id);
     }
@@ -49,7 +49,7 @@ public class ClienteController {
     @Operation(
             summary = "Put Cliente",
             description = "Atualiza um Cliente - Necessita de autenticação por token JWT",
-            security = {@SecurityRequirement(name = "bearer-key")})
+            security = @SecurityRequirement(name = "bearer-key"))
     public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO1 dto, @PathVariable Integer id) {
         dto.setId(id);
         service.update(new Cliente(dto));
@@ -60,7 +60,7 @@ public class ClienteController {
     @Operation(
             summary = "Delete Cliente",
             description = "Deleta um Cliente - Necessita de autenticação por token JWT",
-            security = {@SecurityRequirement(name = "bearer-key")})
+            security = @SecurityRequirement(name = "bearer-key"))
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
@@ -72,7 +72,7 @@ public class ClienteController {
             summary = "Find All Clientes",
             description = "Retorna todos os Clientes - Necessita de autenticação portoken JWT - Apenas usuários ADMIN " +
                     "têm autorização para esse endpoint",
-            security = {@SecurityRequirement(name = "bearer-key")})
+            security = @SecurityRequirement(name = "bearer-key"))
     public List<ClienteDTO1> findAll() {
         return service.findAll().stream().map(ClienteDTO1::new).collect(Collectors.toList());
     }
@@ -81,7 +81,7 @@ public class ClienteController {
     @PreAuthorize("hasAnyRole('ADMIN')")
     @Operation(
             summary = "Page Clientes",
-            description = "Retorna uma Page de Clientes - Necessita de autenticação por token JWT - Apenas usuários " +
+            description = "Retorna um Page de Clientes - Necessita de autenticação por token JWT - Apenas usuários " +
                     "ADMIN têm autorização para esse endpoint",
             security = @SecurityRequirement(name = "bearer-key"))
     public Page<ClienteDTO1> findPage(Pageable pageable) {
