@@ -163,10 +163,6 @@ Atualização do projeto https://github.com/Joshaby/SpringBoot2-Ionic-Backend
   }
   ```
 
-## Notas
-
-Endpoints `/produtos/**`, `/categorias/**`, `/clientes/**` e `/auth/forgot/**` não necessitam de autenticação. O endpoint `/h2-console` só funciona no ambiente de test.
-
 ### Como acessar endpoints autenticados?
 
 Para acessar um endpoint autenticado, sua requisição precisar ter o campo Authorization com o token no cabeçalho. 
