@@ -4,7 +4,6 @@ import com.joshaby.springboot2backend.security.JWTAuthenticationFilter;
 import com.joshaby.springboot2backend.security.JWTAuthorizationFilter;
 import com.joshaby.springboot2backend.security.util.JWTUtil;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;

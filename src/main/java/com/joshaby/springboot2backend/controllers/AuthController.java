@@ -8,7 +8,7 @@ import com.joshaby.springboot2backend.services.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,19 +16,17 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/auth")
+@AllArgsConstructor
 @Tag(
         name = "Auth Controller",
         description = "Geração de novo token JWT, e envio de emails com novas senhas"
 )
 public class AuthController {
 
-    @Autowired
     private JWTUtil jwtUtil;
 
-    @Autowired
     private UserService userService;
 
-    @Autowired
     private AuthService authService;
 
     @PostMapping("/refresh_token")

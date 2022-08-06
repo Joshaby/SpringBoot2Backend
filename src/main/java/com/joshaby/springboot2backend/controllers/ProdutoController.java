@@ -6,7 +6,6 @@ import com.joshaby.springboot2backend.entities.Produto;
 import com.joshaby.springboot2backend.services.ProdutoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +20,6 @@ import java.util.List;
 )
 public class ProdutoController {
 
-    @Autowired
     private ProdutoService service;
 
     @GetMapping("/{id}")

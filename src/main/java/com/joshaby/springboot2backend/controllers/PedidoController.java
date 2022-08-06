@@ -5,7 +5,6 @@ import com.joshaby.springboot2backend.services.PedidoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,6 @@ import java.net.URI;
 )
 public class PedidoController {
 
-    @Autowired
     public PedidoService service;
 
     @GetMapping("/{id}")

@@ -7,7 +7,7 @@ import com.joshaby.springboot2backend.services.ClienteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -22,13 +22,13 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/clientes")
+@AllArgsConstructor
 @Tag(
         name = "Cliente Controller",
         description = "CRUD para Clientes"
 )
 public class ClienteController {
 
-    @Autowired
     private ClienteService service;
 
     @GetMapping("/{id}")
