@@ -4,6 +4,7 @@ import com.joshaby.springboot2backend.entities.Categoria;
 import com.joshaby.springboot2backend.repositories.CategoriaRepository;
 import com.joshaby.springboot2backend.services.exceptions.DataIntegrityException;
 import com.joshaby.springboot2backend.services.exceptions.ObjectNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -14,9 +15,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class CategoriaService {
 
-    @Autowired
     private CategoriaRepository repository;
 
     public Categoria find(Integer id) {

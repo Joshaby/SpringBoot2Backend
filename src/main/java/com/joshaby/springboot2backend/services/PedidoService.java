@@ -11,7 +11,7 @@ import com.joshaby.springboot2backend.repositories.PedidoRepository;
 import com.joshaby.springboot2backend.security.UserDetailsImpl;
 import com.joshaby.springboot2backend.services.exceptions.AuthorizationException;
 import com.joshaby.springboot2backend.services.exceptions.ObjectNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -21,30 +21,23 @@ import java.util.Date;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class PedidoService {
 
-    @Autowired
     private PedidoRepository repository;
 
-    @Autowired
     private ClienteService clienteService;
 
-    @Autowired
     private BoletoService boletoService;
 
-    @Autowired
     private PagamentoRepository pagamentoRepository;
 
-    @Autowired
     private ProdutoService produtoService;
 
-    @Autowired
     private ItemPedidoRepository itemPedidoRepository;
 
-    @Autowired
     private EmailService emailService;
 
-    @Autowired
     private UserService userService;
 
     public Pedido find(Integer id) {

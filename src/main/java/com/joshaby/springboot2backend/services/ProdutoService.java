@@ -5,6 +5,7 @@ import com.joshaby.springboot2backend.entities.Produto;
 import com.joshaby.springboot2backend.repositories.CategoriaRepository;
 import com.joshaby.springboot2backend.repositories.ProdutoRepository;
 import com.joshaby.springboot2backend.services.exceptions.ObjectNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,12 +15,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class ProdutoService {
 
-    @Autowired
     private ProdutoRepository repository;
 
-    @Autowired
     private CategoriaRepository categoriaRepository;
 
     public Produto find(Integer id) {
