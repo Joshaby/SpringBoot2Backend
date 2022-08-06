@@ -3,10 +3,10 @@ package com.joshaby.springboot2backend.services;
 import com.joshaby.springboot2backend.entities.Cliente;
 import com.joshaby.springboot2backend.repositories.ClienteRepository;
 import com.joshaby.springboot2backend.services.exceptions.ObjectNotFoundException;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.StringUtils;
 
 @Service
 public class AuthService {
@@ -32,6 +32,6 @@ public class AuthService {
     }
 
     private String generateNewPassword() {
-        return RandomStringUtils.randomAlphanumeric(8).toLowerCase();
+        return StringUtils.randomAlphanumeric(8).toLowerCase();
     }
 }

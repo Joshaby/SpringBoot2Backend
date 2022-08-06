@@ -195,6 +195,4 @@ Após isso você precisa definir seu email e senha no arquivo application.proper
 
 - Java JWT: JSON Web Token for Java and Android 0.11.5
 
-- Apache Commons Lang3 3.12.0
-
 - Swagger com SpringDoc Open API v3 1.6.9
