@@ -16,7 +16,10 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/auth")
-@Tag(name = "Auth Controller", description = "providencia novo token JWT, e envio de emails com novas senhas")
+@Tag(
+        name = "Auth Controller",
+        description = "Geração de novo token JWT, e envio de emails com novas senhas"
+)
 public class AuthController {
 
     @Autowired
@@ -30,9 +33,9 @@ public class AuthController {
 
     @PostMapping("/refresh_token")
     @Operation(
-            summary = "Post token JWT",
             description = "Gera um novo token JWT a partir um outro token JWT perto de expirar",
-            security = @SecurityRequirement(name = "bearer-key"))
+            security = @SecurityRequirement(name = "bearer-key")
+    )
     public void refreshToken(HttpServletResponse response) {
         UserDetailsImpl userDetailsImpl = userService.getUserAuthenticated();
         String token = jwtUtil.generateToken(userDetailsImpl.getUsername());
@@ -40,7 +43,7 @@ public class AuthController {
     }
 
     @PostMapping("/forgot")
-    @Operation(summary = "Post Email", description = "Gera uma nova senha e envia ao email informado")
+    @Operation(description = "Gera uma nova senha e envia ao email informado")
     public void forgot(@Valid @RequestBody EmailDTO dto) {
         authService.sendNewPassword(dto.getEmail());
     }

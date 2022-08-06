@@ -22,7 +22,10 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/clientes")
-@Tag(name = "Cliente Controller", description = "providencia um CRUD para Clientes")
+@Tag(
+        name = "Cliente Controller",
+        description = "CRUD para Clientes"
+)
 public class ClienteController {
 
     @Autowired
@@ -30,15 +33,15 @@ public class ClienteController {
 
     @GetMapping("/{id}")
     @Operation(
-            summary = "Get Cliente",
             description = "Retorna um Cliente a partir de um ID - Necessita de autenticação por token JWT",
-            security = @SecurityRequirement(name = "bearer-key"))
+            security = @SecurityRequirement(name = "bearer-key")
+    )
     public Cliente find(@PathVariable Integer id) {
         return service.find(id);
     }
 
     @PostMapping
-    @Operation(summary = "Post Cliente", description = "Adiciona um Cliente")
+    @Operation(description = "Adiciona um Cliente")
     public ResponseEntity<Void> insert(@Valid @RequestBody ClienteDTO2 dto) {
         Cliente cliente = service.insert(new Cliente(dto));
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(cliente.getId()).toUri();
@@ -47,9 +50,9 @@ public class ClienteController {
 
     @PutMapping("/{id}")
     @Operation(
-            summary = "Put Cliente",
             description = "Atualiza um Cliente - Necessita de autenticação por token JWT",
-            security = @SecurityRequirement(name = "bearer-key"))
+            security = @SecurityRequirement(name = "bearer-key")
+    )
     public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO1 dto, @PathVariable Integer id) {
         dto.setId(id);
         service.update(new Cliente(dto));
@@ -58,9 +61,9 @@ public class ClienteController {
 
     @DeleteMapping("/{id}")
     @Operation(
-            summary = "Delete Cliente",
             description = "Deleta um Cliente - Necessita de autenticação por token JWT",
-            security = @SecurityRequirement(name = "bearer-key"))
+            security = @SecurityRequirement(name = "bearer-key")
+    )
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
@@ -69,10 +72,10 @@ public class ClienteController {
     @GetMapping
     @PreAuthorize("hasAnyRole('ADMIN')")
     @Operation(
-            summary = "Find All Clientes",
             description = "Retorna todos os Clientes - Necessita de autenticação portoken JWT - Apenas usuários ADMIN " +
                     "têm autorização para esse endpoint",
-            security = @SecurityRequirement(name = "bearer-key"))
+            security = @SecurityRequirement(name = "bearer-key")
+    )
     public List<ClienteDTO1> findAll() {
         return service.findAll().stream().map(ClienteDTO1::new).collect(Collectors.toList());
     }
@@ -80,10 +83,10 @@ public class ClienteController {
     @GetMapping("/page")
     @PreAuthorize("hasAnyRole('ADMIN')")
     @Operation(
-            summary = "Page Clientes",
             description = "Retorna um Page de Clientes - Necessita de autenticação por token JWT - Apenas usuários " +
                     "ADMIN têm autorização para esse endpoint",
-            security = @SecurityRequirement(name = "bearer-key"))
+            security = @SecurityRequirement(name = "bearer-key")
+    )
     public Page<ClienteDTO1> findPage(Pageable pageable) {
         return service.findPage(pageable).map(ClienteDTO1::new);
     }
