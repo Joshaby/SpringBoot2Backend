@@ -2,7 +2,7 @@ package com.joshaby.springboot2backend.services;
 
 import com.joshaby.springboot2backend.entities.Cliente;
 import com.joshaby.springboot2backend.entities.Pedido;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -14,16 +14,20 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.util.Date;
 
+@NoArgsConstructor
 public abstract class AbstractEmailService implements EmailService {
 
     @Value("${default.sender}")
     private String sender;
 
-    @Autowired
-    private TemplateEngine templateEngine;
+    protected TemplateEngine templateEngine;
 
-    @Autowired
-    private JavaMailSender mailSender;
+    protected JavaMailSender javaMailSender;
+
+    public AbstractEmailService(TemplateEngine templateEngine, JavaMailSender javaMailSender) {
+        this.templateEngine = templateEngine;
+        this.javaMailSender = javaMailSender;
+    }
 
     @Override
     public void sendOrderConfirmationEmail(Pedido pedido) {
@@ -58,7 +62,7 @@ public abstract class AbstractEmailService implements EmailService {
     }
 
     protected MimeMessage prepareHtmlMailMessage(Pedido pedido) throws MessagingException {
-        MimeMessage mailMessage = mailSender.createMimeMessage();
+        MimeMessage mailMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mailMessage, true);
         messageHelper.setTo(pedido.getCliente().getEmail());
         messageHelper.setFrom(sender);

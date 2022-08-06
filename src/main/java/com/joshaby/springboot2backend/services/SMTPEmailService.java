@@ -1,12 +1,11 @@
 package com.joshaby.springboot2backend.services;
 
-import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.thymeleaf.TemplateEngine;
 
 import javax.mail.internet.MimeMessage;
 
@@ -14,11 +13,12 @@ public class SMTPEmailService extends AbstractEmailService {
 
     private static final Logger LOG = LoggerFactory.getLogger(SMTPEmailService.class);
 
-    @Autowired
-    private MailSender mailSender;
+    private final MailSender mailSender;
 
-    @Autowired
-    private JavaMailSender javaMailSender;
+    public SMTPEmailService(TemplateEngine templateEngine, JavaMailSender javaMailSender, MailSender mailSender) {
+        super(templateEngine, javaMailSender);
+        this.mailSender = mailSender;
+    }
 
     @Override
     public void sendEmail(SimpleMailMessage mailMessage) {
