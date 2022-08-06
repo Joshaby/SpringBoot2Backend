@@ -5,6 +5,7 @@ import com.joshaby.springboot2backend.services.PedidoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.net.URI;
 
 @RestController
 @RequestMapping("/pedidos")
+@AllArgsConstructor
 @Tag(
         name = "Pedido Controller",
         description = "Inserção e recuperação de Pedidos"
