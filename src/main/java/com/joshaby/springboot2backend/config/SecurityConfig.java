@@ -3,6 +3,7 @@ package com.joshaby.springboot2backend.config;
 import com.joshaby.springboot2backend.security.JWTAuthenticationFilter;
 import com.joshaby.springboot2backend.security.JWTAuthorizationFilter;
 import com.joshaby.springboot2backend.security.util.JWTUtil;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +28,7 @@ import java.util.Arrays;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
+@AllArgsConstructor
 public class SecurityConfig {
 
     private static final String[] PUBLIC_MATCHES = {
@@ -44,16 +46,12 @@ public class SecurityConfig {
             "/auth/forgot/**"
     };
 
-    @Autowired
     private UserDetailsService userDetailsService;
 
-    @Autowired
     private Environment environment;
 
-    @Autowired
     private JWTUtil jwtUtil;
 
-    @Autowired
     private AuthenticationConfiguration authenticationConfiguration;
 
     @Bean
